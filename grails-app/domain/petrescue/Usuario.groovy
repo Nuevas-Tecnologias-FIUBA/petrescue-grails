@@ -19,11 +19,13 @@ class Usuario {
 	String apodo
 	String contrasena
 
-	Set<Aviso> avisos = []
+	Set avisos = []
 
 	HojaDeContacto hojaDeContacto
 
 	static embedded = ['hojaDeContacto']
+
+	static hasMany = [avisos: Aviso]
 
 	static constraints = {
 		apodo nullable: false, blank: false, unique: true
@@ -38,5 +40,19 @@ class Usuario {
 
 		this.apodo = apodo
 		this.contrasena = contrasena
+	}
+	
+	Aviso publicarAviso(def mascota, def ubicacion) {
+		if (!this.hojaDeContacto) {
+			//return null 
+			throw new UsuarioSinHojaDeContactoException("el usuario no cargo la hoja de contacto, no puede publicar")
+		}
+		
+		Aviso aviso = new Aviso(
+			this,
+			mascota, new Date(), ubicacion, TipoAviso.PERDIDO)
+
+		this.avisos << aviso
+		aviso
 	}
 }

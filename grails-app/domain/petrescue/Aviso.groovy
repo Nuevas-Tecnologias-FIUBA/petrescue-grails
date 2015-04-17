@@ -28,6 +28,8 @@ class Aviso {
 
 	TipoAviso tipoAviso
 
+	byte[] fotitos // no usar nunca
+
 	Mascota mascota
 	Usuario publicador
 

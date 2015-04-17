@@ -1,7 +1,9 @@
 class UrlMappings {
 
 	static mappings = {
-		"/$controller/$action?/$id?"{
+		"/url-re-copada"(controller: 'publicacion', action: 'index')
+		
+		"/${controller}/$action?/$id?"{
 			constraints {
 				// apply constraints here
 			}
