@@ -23,6 +23,8 @@ class PublicacionController {
 			return
 		}
 
+		def fotito = request.getFile('fotito')
+
 		def nombre = command.nombre
 		def raza = command.raza
 		def direccion = command.direccion
@@ -30,11 +32,10 @@ class PublicacionController {
 		try {
 			Usuario logeado = Usuario.get(1)
 
-			throw new IllegalStateException("no hay base")
-
 			Mascota mascota = new Mascota(nombre: nombre, raza: raza)
 			Ubicacion ubicacion = new Ubicacion(direccion: direccion, provincia: 'CABA')
 			Aviso aviso = logeado.publicarAviso(mascota, ubicacion)
+			aviso.fotitos = fotito.bytes
 			aviso.save(failOnError: true)
 
 			// render "creando aviso ${aviso}"
@@ -43,6 +44,11 @@ class PublicacionController {
 			// render "cargá la hoja de contacto"
 			redirect action: 'cargarHojaDeContacto'
 		}
+	}
+
+	def fotoAviso(Long id) {
+		Aviso aviso = Aviso.get(id)
+		response.outputStream << aviso.fotitos
 	}
 
 	def cargarHojaDeContacto() {

@@ -44,7 +44,9 @@ class Aviso {
 		publicador nullable: false
 		fecha nullable: false
 		ubicacion nullable: false
+		fotitos maxSize: 1000000
 	}
+	
 
 	Aviso(Usuario publicador, Mascota mascota, Date fecha, Ubicacion ubicacion, TipoAviso tipoAviso) {
 		this.publicador = publicador

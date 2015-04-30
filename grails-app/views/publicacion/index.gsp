@@ -20,10 +20,13 @@
 				</g:hasErrors>
 			</g:if>
 		
-			<g:form action="publicarAviso">
+			<g:form action="publicarAviso" enctype="multipart/form-data">
 				nombre: <g:textField name="nombre" value="${command.nombre}" /><br/>
 				raza: <g:textField name="raza" value="${command.raza}" /> <br/>
 				direccion: <g:textField name="direccion" value="${command.direccion}" />
+				
+				foto: <input type="file" name="fotito" />
+				
 				
 				<input type="submit" value="dale que lo perdí" />
 			</g:form>

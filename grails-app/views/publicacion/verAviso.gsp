@@ -9,5 +9,8 @@
 		
 		la mascota ${aviso.mascota.nombre} ${aviso.tipoAviso} el dia
 		${aviso.fecha} en ${aviso.ubicacion.direccion} ${aviso.ubicacion.provincia}
+		
+		${aviso.fotitos}
+		<img src="${createLink(action: 'fotoAviso', id: aviso.id)}">
 	</body>
 </html>

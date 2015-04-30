@@ -45,7 +45,7 @@ class Usuario {
 	Aviso publicarAviso(def mascota, def ubicacion) {
 		if (!this.hojaDeContacto) {
 			//return null 
-			throw new UsuarioSinHojaDeContactoException("el usuario no cargo la hoja de contacto, no puede publicar")
+			// throw new UsuarioSinHojaDeContactoException("el usuario no cargo la hoja de contacto, no puede publicar")
 		}
 		
 		Aviso aviso = new Aviso(
